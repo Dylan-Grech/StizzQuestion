@@ -1,0 +1,101 @@
+.landing.launching {
+  animation: landing-exit .52s cubic-bezier(.7, 0, 1, .5) forwards;
+}
+
+.landing.launching .hero-art img {
+  animation: pastizz-launch .52s cubic-bezier(.18, .8, .35, 1) forwards;
+}
+
+.landing .primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 #c6201b;
+}
+
+/* Keep the quiz prompt close to its progress indicator. */
+.question {
+  padding-top: 24px;
+}
+
+.scanner {
+  isolation: isolate;
+}
+
+.camera-feed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  opacity: .72;
+}
+
+.scanner .scan-grid,
+.scanner .scan-line,
+.camera-message {
+  z-index: 1;
+}
+
+.camera-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d8cfca;
+  font: 10px/1.5 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.scanner:disabled {
+  cursor: wait;
+}
+
+.scanner.locking {
+  border-color: #f5b146;
+  box-shadow: 0 0 0 7px #f5b14618, inset 0 0 45px #000;
+}
+
+.scanner.active {
+  animation: scanner-locked 1.15s ease-in-out infinite alternate;
+}
+
+@keyframes scanner-locked {
+  to { box-shadow: 0 0 0 11px #e7302728, 0 0 24px #e7302738, inset 0 0 45px #000; }
+}
+
+.result-top .result-name {
+  max-width: 360px;
+  margin: 4px auto 10px;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(39px, 11vw, 52px);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -2.8px;
+}
+
+.result-top .result-type {
+  margin: 0;
+  color: var(--red);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+
+.payment-error {
+  margin: 14px 0 -2px;
+  color: #b42318;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@keyframes pastizz-launch {
+  to { transform: translateY(-130px) rotate(12deg) scale(1.12); opacity: 0; }
+}
+
+@keyframes landing-exit {
+  to { opacity: 0; transform: scale(1.025); }
+}
